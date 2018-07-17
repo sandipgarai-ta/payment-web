@@ -1,0 +1,147 @@
+<app-nav></app-nav>
+<br><br>
+<div class="content-wrapper">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <table class="table" style="border:none;" cellpadding="5">
+          <tr class=" no-line">
+              <td class=" no-line"><b>Client Name:</b></td>
+                <td class=" no-line"><input type="text"></td>
+            </tr>
+            <tr class=" no-line">
+              <td class=" no-line"><b>Email id:</b></td>
+                <td class=" no-line"><input type="text"></td>
+            </tr>
+            <tr class=" no-line">
+              <td class=" no-line"><b>Contact no:</b></td>
+                <td class=" no-line"><input type="text"></td>
+            </tr>
+        </table>
+      </div>
+      <div class="col-sm-6">
+          <table class="table" style="border:none;" cellpadding="5">
+            <tr class=" no-line">
+                <td class=" no-line"><b>Client GST:</b></td>
+                  <td class=" no-line"><input type="text"></td>
+              </tr>
+              <tr class=" no-line">
+                <td class=" no-line"><b>Address:</b></td>
+                <td class=" no-line">
+                  <textarea  rows="2"></textarea>
+                </td>
+              </tr>
+              <tr class=" no-line">
+                <td class=" no-line"><b>State:</b></td>
+                <td class=" no-line">
+                  <select class="custom-select" id="inputGroupSelect02">
+                    <option selected value="-1">Choose...</option>
+                    <option value="1">State-1</option>
+                    <option value="2">State-2</option>
+                    <option value="3">Westbengal</option>
+                  </select>
+                </td>
+              </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+      
+  <div class="container">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>&nbsp;</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                <tr class="table-primary">
+                    <td><strong>#</strong></td>
+                    <td><strong>Item</strong></td>
+                    <td class="text-center"><strong>Details</strong></td>
+                    <td class="text-center"><strong>Quantity</strong></td>
+                    <td class="text-right"><strong>Package Amount</strong></td>
+                    <td class="text-right"><strong>Total Amount</strong></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of billingService.billingArray; let i = index">
+                  <td>{{i+1}}. </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="x.itemId" (change)="itemChange(x,i)">
+                          <option selected value="-1">Choose...</option>
+                        <option *ngFor="let item of billingService.itemArray" [value]="item.itemId">{{item.itemName}}</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <textarea rows="2" [(ngModel)]="x.details"></textarea>
+                  </td>
+                  <td class="text-center">
+                      <div class="input-group mb-3">
+                      <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="x.quantity" (change)="changeOfQuantity(i)">
+                        <option selected value="-1">Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <span class="input-group-text" style="text-align: center;">{{x.packageAmount}}</span>
+                  </td>
+                  <td class="text-right">
+                      <span class="input-group-text" style="text-align: center;">{{x.totalAmount}}</span>
+                  </td>
+                  <td class="text-right" >
+                      <i class="fa fa-plus" aria-hidden="true" *ngIf="i == billingService.billingArray.length - 1" (click)="addRow(i)"></i>
+                      <i class="fa fa-times" aria-hidden="true" *ngIf="i < billingService.billingArray.length" (click)="removeRow(i)"></i>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="thick-line"></td>
+                  <td class="thick-line"></td>
+                  <td class="thick-line"></td>
+                  <td class="thick-line text-center"><strong>Total Amount</strong></td>
+                  <td class="thick-line text-right">{{billingService.mainBillingObj.totalAmount}}</td>
+                </tr>
+                
+                <tr>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <div>
+                      <td class="no-line text-center"><strong>GST(18%)</strong></td>
+                      <td class="no-line text-right">1800.00</td>
+                  </div>
+                  <div>
+                      <td class="no-line text-center"><strong>SGST(9%)</strong></td>
+                      <td class="no-line text-center"><strong>IGST(9%)</strong></td>
+                      <td class="no-line text-right">1800.00</td>
+                  </div>
+                  
+                </tr>
+                
+                <tr>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <td class=" text-center"><strong>Gross Total</strong></td>
+                  <td class=" text-right">11,800.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>  
+      <p>&nbsp;</p>
+      <p class="text-center"><a href="#" class="btn btn-primary">Send Payment Request</a></p>
+    </div>
+  </div>
+
+</div>

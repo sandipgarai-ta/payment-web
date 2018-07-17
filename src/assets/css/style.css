@@ -1,0 +1,101 @@
+a
+{
+	text-decoration:none;	
+}
+a:hover
+{
+	text-decoration:none;	
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.no-line {
+    border-top: none;
+}
+.card
+{
+    padding: 30px;
+    margin-bottom: 50px;
+	height: 295px;
+	background: #f9f9f9;
+}
+.card h1
+{
+    font-size: 75px;	
+}
+.card h3
+{
+    font-size: 18px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+.main
+{
+	margin-left:15px;
+	margin-right:15px;	
+}
+.text-white
+{
+	color:#fff;	
+}
+.top-heading
+{
+    width: 100%;
+    line-height: 50px;
+    background: #343a40;
+    margin-bottom: 50px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
